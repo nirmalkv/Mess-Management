@@ -14,9 +14,9 @@
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 </head>
 <body style="background-color: #0d1a21">
-<div class="container">
+<div class="container-fluid">
 	<div class="row">
-		<div class="col-md-12 col-sm-12">
+		<div class="col-lg-12 col-sm-12">
 			<div class="jumbotron">
 				<h1 class="text-center">Mess Registration System</h1>
 				<h4 class="text-center">NITC</h4>
@@ -25,24 +25,38 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-md-6 col-sm-12">
-			<div class="card">
-				<div class="card-header">Download Registration</div>
+		<div class="col-lg-4 col-sm-12 d-flex mb-4">
+			<div class="card flex-fill">
+				<div class="card-header text-center">Download Registration</div>
 				<div class="card-body">
 					<form action="php/getReg.php" method="post">
-						<input type="submit" name="download" value="Download">
+						<input type="submit" name="download" value="Download" class="btn btn-primary btn-block">
 					</form>
 				</div>
 			</div>
 		</div>
-		<div class="col-md-6 col-sm-12">
-			<div class="card">
-				<div class="card-header">Upload Dues</div>
-				<div class="card-body">
+		<br>
+		<div class="col-lg-4 col-sm-12 d-flex mb-4">
+			<div class="card flex-fill">
+				<div class="card-header text-center">Upload Dues</div>
+				<div class="card-body ">
 					<form action="php/upload.php" method="post" enctype="multipart/form-data">
-						<input type="file" name="duefile" id="duefile">
-						<input type="submit" name="submit" value="submit">
+						<div class="row">
+						<input type="file" name="duefile" id="duefile" class="">
+						<input type="submit" name="submit" value="submit" class="btn btn-primary">
+					</div>
 					</form>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-12 col-lg-4 d-flex mb-4">
+				<div class="card flex-fill">
+					<div class="card-header text-center">Logout</div>
+					<div class="card-body">
+						<form action="../Logout/logout.php" method="post">
+							<input type="submit" name="submit" value="Logout" class="btn btn-primary btn-block">
+						</form>
+					</div>
 				</div>
 			</div>
 		</div>
