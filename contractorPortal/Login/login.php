@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Student Login</title>
+	<title>Mess Contractor Login</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
@@ -68,9 +68,9 @@
 
               <div class="collapse navbar-collapse justify-content-end align-items-center" id="navbarSupportedContent">
                 <ul class="navbar-nav">
-                <li><a href="#home">Home</a></li>
+                <li><a href="http://messregistration.com">Home</a></li>
                 <li><a href="meet-the-team.html">Contact Us</a></li>
-                <li><a href="#logout">LOGOUT</a></li>                 
+                <li><a href="http://<?php echo $_SERVER['SERVER_NAME']; ?>/Logout/logout.php">LOGOUT</a></li>                 
                 </ul>
               </div>            
           </div>

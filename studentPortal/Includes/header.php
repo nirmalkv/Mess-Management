@@ -9,9 +9,9 @@
         </button>
         <div class="collapse navbar-collapse justify-content-end align-items-center" id="navbarSupportedContent">
           <ul class="navbar-nav">
-          <li><a href="<?php echo "http://".$_SERVER['SERVER_NAME']; ?>">Home</a></li>
-          <li><a href="meet-the-team.html">Contact Us</a></li>
-          <li><a href="#logout">LOGOUT</a></li>                 
+          <li><a href="<?php echo 'http://'.$_SERVER['SERVER_NAME']; ?>">Home</a></li>
+          <li><a href="http://messregistration.com/meet-the-team.html">Contact Us</a></li>
+          <li><a href="http://student.messregistration.com/Logout/logout.php">LOGOUT</a></li>                 
           </ul>
         </div>            
     </div>
