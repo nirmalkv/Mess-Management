@@ -1,5 +1,5 @@
 <header class="default-header">
-  <nav class="navbar navbar-expand-lg  navbar-light">
+  <nav class="navbar navbar-expand-lg  navbar-light" style="background-color: #FFF;">
     <div class="container">
         <a class="navbar-brand" href="index.html">
           <img src="images/nitc-logo.jpg" alt="">

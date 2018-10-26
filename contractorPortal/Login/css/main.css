@@ -295,6 +295,24 @@ iframe {
   background: #fff;
 }
 
+p.head2{
+
+
+    font-family: 'Roboto', sans-serif;
+    color: #FFF;
+    font-size: 85px;
+    font-weight: bold;
+}
+
+@media print {
+
+    @page {size: A4 landscape; }
+
+    /* use width if in portrait (use the smaller size to try 
+       and prevent image from overflowing page... */
+    img { height: 90%; margin: 0; padding: 0; } 
+}
+
 .focus-input100::after {
   font-family: Material-Design-Iconic-Font;
   font-size: 22px;
