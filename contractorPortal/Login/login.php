@@ -98,7 +98,7 @@
 						<input class="input100" type=password name=password placeholder="Password" required">
 						<span class="focus-input100" data-placeholder="&#xf191;"></span>
 					</div>
-
+					<div id="username-pass-error" style="color: pink; margin-bottom: 10px;"></div>
 					<div class="contact100-form-checkbox">
 						<input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
 						<label class="label-checkbox100" for="ckb1">
@@ -151,5 +151,16 @@
         </div>
       </footer>
       <!-- End footer Area -->   
+<?php 
+	if(isset($_GET['Error']))
+	{
+		echo '<script>console.log("Hi there");</script>';
+		echo '<script>$("#username-pass-error").append("Incorrect Username/Password");</script>';
+	}
+	else
+	{
+		echo '<script>console.log("Get failed");</script>';
+	}
+ ?>
 </body>
 </html>
