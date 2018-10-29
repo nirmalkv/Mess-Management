@@ -123,12 +123,7 @@
 <?php 
 	if(isset($_GET['Error']))
 	{
-		echo '<script>console.log("Hi there");</script>';
 		echo '<script>$("#username-pass-error").append("Incorrect Username/Password");</script>';
-	}
-	else
-	{
-		echo '<script>console.log("Get failed");</script>';
 	}
  ?>
 </body>

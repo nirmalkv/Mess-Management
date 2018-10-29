@@ -56,26 +56,7 @@
       <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-	<header class="default-header">
-        <nav class="navbar navbar-expand-lg  navbar-light">
-          <div class="container">
-              <a class="navbar-brand" href="index.html">
-                <img src="images/nitc-logo.jpg" alt="">
-              </a>
-              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-
-              <div class="collapse navbar-collapse justify-content-end align-items-center" id="navbarSupportedContent">
-                <ul class="navbar-nav">
-                <li><a href="http://messregistration.com">Home</a></li>
-                <li><a href="meet-the-team.html">Contact Us</a></li>
-                <li><a href="http://<?php echo $_SERVER['SERVER_NAME']; ?>/Logout/logout.php">LOGOUT</a></li>                 
-                </ul>
-              </div>            
-          </div>
-        </nav>
-      </header>
+	<?php include_once("{$_SERVER['DOCUMENT_ROOT']}/Includes/header.php"); ?>
     <section class="banner-area relative" id="home" data-parallax="scroll" data-image-src="images/NIT-Calicut.jpg">
 	<div class="limiter">
 		<div class="container-login100" style="background-image: url('images/NIT-Calicut.jpg');">
@@ -138,28 +119,12 @@
 <!--===============================================================================================-->
 	<script src="js/main.js"></script>
 <!-- start footer Area -->    
-      <footer style="background-color: #3c3c3c; padding: 25px; ">
-        <div class="container">
-          
-
-          <div class="row">
-            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-            <p class="col-lg-8 col-sm-12 footer-text m-0 text-white">Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Developed by Faris - Dheeraj - Ameen - Nirmal
-            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-            
-          </div>
-        </div>
-      </footer>
+      <?php include_once("{$_SERVER['DOCUMENT_ROOT']}/Includes/footer.php"); ?>
       <!-- End footer Area -->   
 <?php 
 	if(isset($_GET['Error']))
 	{
-		echo '<script>console.log("Hi there");</script>';
 		echo '<script>$("#username-pass-error").append("Incorrect Username/Password");</script>';
-	}
-	else
-	{
-		echo '<script>console.log("Get failed");</script>';
 	}
  ?>
 </body>
