@@ -149,23 +149,9 @@
 	<br><br>
 	<div class="row" style="padding-left: 450px;">
 		<div class="col-lg-3" >
-			<form method="post">
-				<input class="waves-effect waves-light btn" type="submit" value="Check Dues" name="Dues">
-			</form>
+				<button class="waves-effect waves-light btn" onclick="getDues('<?php echo $_SESSION['Username']; ?>')">Check Dues</button>
 		</div>
-		<div class="col-lg-3" style="font-size: 18px" >
-			<?php 
-				if (isset($_POST['Dues'])) {
-					$username = $_SESSION['Username'];
-					$sql = "SELECT Due FROM due_list WHERE Rollno = '$username'";
-					$result = $MYSQL_CONNECTION->query($sql);
-					$Due_out = $result->fetch_assoc();
-					$due = $Due_out["Due"];
-					echo "Rs ", $due;
-
-				}	
-			 ?>
-		</div>
+		<div class="col-lg-3" style="font-size: 18px" id="append-dues"></div>
 	</div>
 	<div class="row" style="padding-left: 450px;">
 		<div class="col-lg-12" style="font-size: 18px;">
@@ -217,6 +203,18 @@
 	<script src="js/main.js"></script>
 <!-- start footer Area -->    
       <?php include_once("{$_SERVER['DOCUMENT_ROOT']}/Includes/footer.php"); ?>
-      <!-- End footer Area -->   
+      <!-- End footer Area --> 
+<script>
+	function getDues(rollno){
+		console.log("Entered Here");
+		$.post(
+			'php/getDues.php',
+			{
+				rollno :rollno
+			}, function(data){
+				$("#append-dues").append(data);
+			});
+	}
+</script>  
 </body>
 </html>
