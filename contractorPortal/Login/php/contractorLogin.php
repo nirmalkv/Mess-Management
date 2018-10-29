@@ -23,7 +23,7 @@
 		{
 			$query->close();
 			$MYSQL_CONNECTION->close();
-			echo '<script>window.location.replace("../login.php")</script>';
+			echo '<script>window.location.replace("../login.php?Error")</script>';
 		}
 		else
 		{
