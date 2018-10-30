@@ -80,13 +80,13 @@
 <script>
 function verify(str) {
     if (str.length == 0) {
-        document.getElementById("response").innerHTML = "";
+        window.alert("Enter Mess Card Number!");
         return;
     } else {
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("response").innerHTML = this.responseText;
+                window.alert(this.responseText);
             }
         };
         xmlhttp.open("GET", "php/verify.php?messcard=" + str, true);

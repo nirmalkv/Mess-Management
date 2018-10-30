@@ -28,10 +28,10 @@ if(is_uploaded_file(($_FILES['duefile']['tmp_name']))) {
         $filename = "Mess-bill-". $mess .'-'.$month.".xlxs"; 
         $insert = "INSERT INTO due_files (Contractor_id,Mess,Month,Year,Filename,File) VALUES ('$contractorId','$mess','$month','$year','$filename','$file_tmp')";
         if(mysqli_query($MYSQL_CONNECTION,$insert)){
-            // echo "success";
+            echo '<script>window.alert("File uploaded successfully!")</script>';
             echo '<script>window.location.replace("../index.php")</script>';
         } else{
-            // echo "failed";
+            echo '<script>window.alert("File upload failed!")</script>';
             echo '<script>window.location.replace("../index.php")</script>';
         }
     }
@@ -39,10 +39,10 @@ if(is_uploaded_file(($_FILES['duefile']['tmp_name']))) {
         $id = $data['Id'];
         $sql = "UPDATE due_files SET File='$file_tmp' WHERE Id = '$id'";
         if(mysqli_query($MYSQL_CONNECTION,$sql)){
-            // echo "updated";
+            echo '<script>window.alert("File Updated successfully!")</script>';
             echo '<script>window.location.replace("../index.php")</script>';
         } else{
-            // echo "update failed";
+            echo '<script>window.alert("File Update failed!")</script>';
             echo '<script>window.location.replace("../index.php")</script>';
         }
     }
