@@ -50,6 +50,20 @@
 			</div>
 		</div>
 		<div class="col-sm-12 col-lg-4 d-flex mb-4">
+            <div class="card flex-fill">
+                <div class="card-header text-center">Verify</div>
+                    <div class="card-body">
+                       	<form >
+                            <input id = "messcardno" type="text" placeholder="Mess Card No.">
+                            <input type = "button" class ="btn btn-primary" onclick="verify(document.getElementById$
+                            <p id ="response"></p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+		<!-- <div class="col-sm-12 col-lg-4 d-flex mb-4">
 				<div class="card flex-fill">
 					<div class="card-header text-center">Logout</div>
 					<div class="card-body">
@@ -59,8 +73,25 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		</div> -->
 	</div>
 </div>
 </body>
+<script>
+function verify(str) {
+    if (str.length == 0) {
+        document.getElementById("response").innerHTML = "";
+        return;
+    } else {
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("response").innerHTML = this.responseText;
+            }
+        };
+        xmlhttp.open("GET", "php/verify.php?messcard=" + str, true);
+        xmlhttp.send();
+    }
+}
+</script>
 </html>

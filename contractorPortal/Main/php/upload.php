@@ -15,7 +15,7 @@ if(date("m") == 1){
     $month = 12;
     $year = date("Y") - 1;
 } else{
-    $month = date("m") ;
+    $month = date("m") - 1;
     $year = date("Y");
 }
 

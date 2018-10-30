@@ -10,10 +10,7 @@ use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 // Get name of the user's mess
 $username = $_SESSION['Username'];
-$sql = "SELECT Name FROM mess_info WHERE Contractor_ID = '{$username}'";
-$res = mysqli_query($MYSQL_CONNECTION,$sql);
-$data = mysqli_fetch_array($res);
-$mess = $data['Name'];
+$mess = $_SESSION['Mess'];
 
 // Get all students registered in $mess
 $sql = "SELECT * FROM mess_card WHERE Curr_mess = '{$mess}' AND Update_mess='1'";
