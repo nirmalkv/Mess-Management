@@ -77,37 +77,69 @@
 		</div>
 	</div>
 		
-		<div class="row" style="padding-left: 450px; font-size: 18px;">
-		<div class="col-lg-3">Name:</div>
-		<div class="col-lg-3">
+		<div class="row" style=" font-size: 18px;">
+		<span class="col l4 push-l4">Name:</span>
+		<span class="col l4">
 			<?php 
 				echo $details_row["Name"];
 			 ?>
-		</div>
+		</span>
 	</div>
-	<div class="row" style="padding-left: 450px; font-size: 18px;">
-		<div class="col-lg-3">Roll No:</div>
-		<div class="col-lg-3">
+	<div class="row" style=" font-size: 18px;">
+		<span class="col l4 push-l4">Roll Number:</span>
+		<span class="col l4">
 			<?php 
 				echo $username;
 			 ?>
-		</div>
+		</span>
 	</div>
-		<div class="row" style="padding-left: 450px; font-size: 18px;">
-		<div class="col-lg-3">Hostel:</div>
-		<div class="col-lg-3">
+	<div class="row" style=" font-size: 18px;">
+		<span class="col l4 push-l4">Branch:</span>
+		<span class="col l4">
+			<?php 
+				echo $details_row["Branch"];
+			 ?>
+		</span>
+	</div>
+	<div class="row" style=" font-size: 18px;">
+		<span class="col l4 push-l4">Date of Birth:</span>
+		<span class="col l4">
+			<?php 
+				echo $details_row["DOB"];
+			 ?>
+		</span>
+	</div>
+	<div class="row" style=" font-size: 18px;">
+		<span class="col l4 push-l4">Programme:</span>
+		<span class="col l4">
+			<?php 
+				echo $details_row["Programme"];
+			 ?>
+		</span>
+	</div>
+	<div class="row" style=" font-size: 18px;">
+		<span class="col l4 push-l4">Hostel:</span>
+		<span class="col l4">
 			<?php 
 				echo $details_row["Hostel"];
 			 ?>
-		</div>
+		</span>
 	</div>
-		<div class="row" style="padding-left: 450px; font-size: 18px;">
-		<div class="col-lg-3">Room No:</div>
-		<div class="col-lg-3">
+	<div class="row" style=" font-size: 18px;">
+		<span class="col l4 push-l4">Room No:</span>
+		<span class="col l4">
 			<?php 
 				echo $details_row["Room"];
 			 ?>
-		</div>
+		</span>
+	</div>
+	<div class="row" style=" font-size: 18px;">
+		<span class="col l4 push-l4">Phone:</span>
+		<span class="col l4">
+			<?php 
+				echo $details_row["Phone"];
+			 ?>
+		</span>
 	</div>
 	<br><br>
 	<?php 
@@ -116,8 +148,8 @@
 			$mess_details = $result->fetch_assoc();
 			if ($mess_details["Update_mess"] == 1) {
 				?>
-				<div class="row" style="padding-left: 450px; font-size: 18px;">
-				<div class="col-lg-10">You have already registered for 
+				<div class="row" style="font-size: 18px;">
+				<div class="col">You have already registered for 
 					<?php 
 						echo " \"",$mess_details["Curr_mess"],"\" Mess for this month. ";
 					 ?>

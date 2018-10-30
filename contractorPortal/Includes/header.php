@@ -14,7 +14,7 @@
           <?php
           session_start();
           if($_SESSION['LoggedIn']==true)
-          echo '<li><a href="http://student.messregistration.com/Logout/logout.php">LOGOUT</a></li>';
+          echo '<li><a href="http://contractor.messregistration.com/Logout/logout.php">LOGOUT</a></li>';
           ?>                 
           </ul>
         </div>            

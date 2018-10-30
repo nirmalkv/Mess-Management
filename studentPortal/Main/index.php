@@ -4,6 +4,7 @@
 	session_start();
 	require_once("{$_SERVER['DOCUMENT_ROOT']}/Scripts/connection.php");
 	require_once("{$_SERVER['DOCUMENT_ROOT']}/Scripts/checkLoggedOut.php");
+	require_once("{$_SERVER['DOCUMENT_ROOT']}/Scripts/FirstLogin.php");
  ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -82,104 +83,83 @@
 		</p>
 	</div>
 	<br>
-	<div class="row" style="padding-left: 450px; font-size: 18px;">
-		<div class="col-lg-3">Name:</div>
-		<div class="col-lg-3">
+	<div class="row" style=" font-size: 18px;">
+		<span class="col l4 push-l4">Name:</span>
+		<span class="col l4">
 			<?php 
 				echo $details_row["Name"];
 			 ?>
-		</div>
+		</span>
 	</div>
-	<div class="row" style="padding-left: 450px; font-size: 18px;">
-		<div class="col-lg-3">Roll No:</div>
-		<div class="col-lg-3">
+	<div class="row" style=" font-size: 18px;">
+		<span class="col l4 push-l4">Roll Number:</span>
+		<span class="col l4">
 			<?php 
 				echo $username;
 			 ?>
-		</div>
+		</span>
 	</div>
-	<div class="row"  style="padding-left: 450px; font-size: 18px;">
-		<div class="col-lg-3">Branch:</div>
-		<div class="col-lg-3">
+	<div class="row" style=" font-size: 18px;">
+		<span class="col l4 push-l4">Branch:</span>
+		<span class="col l4">
 			<?php 
 				echo $details_row["Branch"];
 			 ?>
-		</div>
+		</span>
 	</div>
-	<div class="row" style="padding-left: 450px; font-size: 18px;">
-		<div class="col-lg-3">Date of Birth:</div>
-		<div class="col-lg-3">
+	<div class="row" style=" font-size: 18px;">
+		<span class="col l4 push-l4">Date of Birth:</span>
+		<span class="col l4">
 			<?php 
 				echo $details_row["DOB"];
 			 ?>
-		</div>
+		</span>
 	</div>
-	<div class="row" style="padding-left: 450px; font-size: 18px;">
-		<div class="col-lg-3">Programme:</div>
-		<div class="col-lg-3">
+	<div class="row" style=" font-size: 18px;">
+		<span class="col l4 push-l4">Programme:</span>
+		<span class="col l4">
 			<?php 
 				echo $details_row["Programme"];
 			 ?>
-		</div>
+		</span>
 	</div>
-	<div class="row" style="padding-left: 450px; font-size: 18px;">
-		<div class="col-lg-3">Hostel:</div>
-		<div class="col-lg-3">
+	<div class="row" style=" font-size: 18px;">
+		<span class="col l4 push-l4">Hostel:</span>
+		<span class="col l4">
 			<?php 
 				echo $details_row["Hostel"];
 			 ?>
-		</div>
+		</span>
 	</div>
-	<div class="row" style="padding-left: 450px; font-size: 18px;">
-		<div class="col-lg-3">Room No:</div>
-		<div class="col-lg-3">
+	<div class="row" style=" font-size: 18px;">
+		<span class="col l4 push-l4">Room No:</span>
+		<span class="col l4">
 			<?php 
 				echo $details_row["Room"];
 			 ?>
-		</div>
+		</span>
 	</div>
-	<div class="row" style="padding-left: 450px; font-size: 18px;">
-		<div class="col-lg-3">Phone:</div>
-		<div class="col-lg-3">
+	<div class="row" style=" font-size: 18px;">
+		<span class="col l4 push-l4">Phone:</span>
+		<span class="col l4">
 			<?php 
 				echo $details_row["Phone"];
 			 ?>
-		</div>
+		</span>
 	</div>
 	<br><br>
-	<div class="row" style="padding-left: 450px;">
-		<div class="col-lg-3" >
+	<div class="row" style="text-align: center;">
+		<div class="col push-l2" >
 				<button class="waves-effect waves-light btn" onclick="getDues('<?php echo $_SESSION['Username']; ?>')">Check Dues</button>
 		</div>
-		<div class="col-lg-3" style="font-size: 18px" id="append-dues"></div>
+		<div class="col l1 pull-l2" style="font-size: 18px" id="append-dues"></div>
 	</div>
-	<div class="row" style="padding-left: 450px;">
-		<div class="col-lg-12" style="font-size: 18px;">
-			<?php 
-			if (isset($_POST['Dues'])) {
-
-				if($due > 0)
-				{
-					echo "You are not eligible to register for any mess. Poyi fees adakk myre";
-				}
-				else
-				{
-					echo "You are eligible to register for a mess";
-			?>
-		</div>
-	</div>
-			
-			<div class="row" style="padding-left: 450px;">
-				<div class="col-lg-4">
+		<div class="row" style="text-align: center;" id="dues-paid" hidden>
+				<div class="col">
 					<form method="post" action="php/register.php">
 						<input class="waves-effect waves-light btn" type="submit" value="Register for Mess" name="Mess_Register">
 					</form>
 				</div>
-			</div>
-			<?php
-				}
-			}
-			 ?>
 		</div>
 	<br><br><br>
 	</section>
@@ -206,13 +186,18 @@
       <!-- End footer Area --> 
 <script>
 	function getDues(rollno){
-		console.log("Entered Here");
 		$.post(
 			'php/getDues.php',
 			{
 				rollno :rollno
 			}, function(data){
-				$("#append-dues").append(data);
+				$("#append-dues").html('');
+				$("#append-dues").html('Rs. '+data);
+
+				if(Number(data) <= 0){
+					console.log("Dues are 0");
+					document.getElementById("dues-paid").removeAttribute("hidden");
+				}
 			});
 	}
 </script>  

@@ -1,4 +1,8 @@
-<footer style="background-color: #3c3c3c; padding: 25px; ">
+<footer style="background-color: #FFF; padding: 25px; clear: both;
+  position: relative;
+  z-index: 10;
+  height: 3em;
+  margin-top: -3em;">
 	<div class="container">
  		<div class="row">
 		    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
