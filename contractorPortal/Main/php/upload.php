@@ -23,7 +23,8 @@ if(is_uploaded_file(($_FILES['duefile']['tmp_name']))) {
     $file_tmp =$_FILES['duefile']['tmp_name'];
     $checkquery = "SELECT Id FROM due_files WHERE Mess='$mess' AND Month='$month' AND Year='$year'";
     $temp = mysqli_query($MYSQL_CONNECTION,$checkquery);
-    if(is_null($temp)){
+    $data = mysqli_fetch_array($temp);
+    if($data['Id'] == ""){
         $filename = "Mess-bill-". $mess .'-'.$month.".xlxs"; 
         $insert = "INSERT INTO due_files (Contractor_id,Mess,Month,Year,Filename,File) VALUES ('$contractorId','$mess','$month','$year','$filename','$file_tmp')";
         if(mysqli_query($MYSQL_CONNECTION,$insert)){
@@ -35,7 +36,6 @@ if(is_uploaded_file(($_FILES['duefile']['tmp_name']))) {
         }
     }
     else{
-        $data = mysqli_fetch_array($temp);
         $id = $data['Id'];
         $sql = "UPDATE due_files SET File='$file_tmp' WHERE Id = '$id'";
         if(mysqli_query($MYSQL_CONNECTION,$sql)){

@@ -55,7 +55,7 @@
                     <div class="card-body">
                        	<form >
                             <input id = "messcardno" type="text" placeholder="Mess Card No.">
-                            <input type = "button" class ="btn btn-primary" onclick="verify(document.getElementById$
+                            <input type = "button" class ="btn btn-primary" onclick="verify(document.getElementById('messcardno').value)" value = "Submit" >
                             <p id ="response"></p>
                         </form>
                     </div>
