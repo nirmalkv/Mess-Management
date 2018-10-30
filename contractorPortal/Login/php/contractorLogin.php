@@ -1,7 +1,7 @@
 <?php
+	session_start();
 	require_once("{$_SERVER['DOCUMENT_ROOT']}/Scripts/checkLoggedIn.php");
 	require_once("{$_SERVER['DOCUMENT_ROOT']}/Scripts/connection.php");
-	echo '<script>console.log("Here");</script>';
 	if(isset($_POST['username']) && isset($_POST['password']))
 	{
 		$username = $MYSQL_CONNECTION->real_escape_string(trim($_POST['username']));
@@ -12,8 +12,6 @@
 		$query->store_result();
 		$query->bind_result($DatabaseUsername,$DatabasePassword);
 		$query->fetch();
-
-		echo '<script>console.log("'.password_verify($password,$DatabasePassword).'");</script>';
 
 		if(!password_verify($password,$DatabasePassword))
 		{
