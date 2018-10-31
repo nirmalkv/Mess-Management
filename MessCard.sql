@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.4.1deb2ubuntu2.1
--- http://www.phpmyadmin.net
+-- version 4.8.0.1
+-- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Oct 26, 2018 at 02:54 PM
--- Server version: 5.7.23-0ubuntu0.16.04.1
--- PHP Version: 7.2.9-1+ubuntu16.04.1+deb.sury.org+1
+-- Generation Time: Oct 26, 2018 at 01:58 PM
+-- Server version: 5.7.23-0ubuntu0.18.04.1
+-- PHP Version: 7.2.10-0ubuntu0.18.04.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -32,6 +34,23 @@ CREATE TABLE `contractor` (
   `PhoneNumber` varchar(20) NOT NULL,
   `Licence_No` varchar(20) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+
+-- Table structure for table `due_files`
+--
+
+CREATE TABLE `due_files` (
+  `Id` int(20) NOT NULL,
+  `Contractor_id` varchar(20) NOT NULL,
+  `Mess` varchar(1) NOT NULL,
+  `Month` varchar(10) NOT NULL,
+  `Year` varchar(4) NOT NULL,
+  `Filename` varchar(40) NOT NULL,
+  `File` blob NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -205,6 +224,12 @@ ALTER TABLE `contractor`
   ADD PRIMARY KEY (`Contractor_ID`);
 
 --
+-- Indexes for table `due_files`
+--
+ALTER TABLE `due_files`
+  ADD PRIMARY KEY (`Id`);
+
+--
 -- Indexes for table `due_list`
 --
 ALTER TABLE `due_list`
@@ -251,6 +276,17 @@ ALTER TABLE `student_info`
 --
 ALTER TABLE `student_user`
   ADD PRIMARY KEY (`Rollno`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `due_files`
+--
+ALTER TABLE `due_files`
+  MODIFY `Id` int(20) NOT NULL AUTO_INCREMENT;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
