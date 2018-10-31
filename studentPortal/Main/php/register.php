@@ -144,85 +144,51 @@
 	<br><br>
 	<?php 
 		$sql = "SELECT * FROM mess_card WHERE Rollno = '$username'";
-		if (($result = $MYSQL_CONNECTION->query($sql))->num_rows > 0 ) {
+		if (($result = $MYSQL_CONNECTION->query($sql))->num_rows > 0 ) 
+		{
 			$mess_details = $result->fetch_assoc();
-			if ($mess_details["Update_mess"] == 1) {
+			if ($mess_details["Update_mess"] == 1) 
+			{
+				echo '<script>console.log("Hi there ready");</script>';
 				?>
 				<div class="row" style="font-size: 18px;">
-				<div class="col">You have already registered for 
-					<?php 
-						echo " \"",$mess_details["Curr_mess"],"\" Mess for this month. ";
-					 ?>
-					 You can't register again for this month.
+					<div class="col">You have already registered for 
+						<?php 
+							echo " \"",$mess_details["Curr_mess"],"\" Mess for this month. ";
+						 ?>
+						 You can't register again for this month.
+					</div>
 				</div>
-			</div>
-				<?php
-			}
-			else{
-				?>
-				<div class="row" style="padding-left: 450px; font-size: 20px; font-weight: bold;">
-			<div class="col-lg-3">
-				SELECT MESS
-			</div>
-
-		</div>
-		<div class="row" style="padding-left: 450px; font-size: 18px;">
-			<form method="post" action="messcard.php" onsubmit="return confirm('Are you sure you want to register for this mess?');">
-				<?php 
-					$sql = "SELECT Name FROM mess_info WHERE Remaining > 0";
-					$result = $MYSQL_CONNECTION->query($sql);
-					while($row = $result->fetch_assoc()) {
-						$mess_name = $row["Name"];
-				?>
-				<br>
-					<p>
-      					<label>
-        					<input name="mess" type="radio" value = <?php echo $mess_name ?> />
-        						<span><?php echo $mess_name ?></span>
-      					</label>
-   					 </p>
-      
-        			<?php
-    				}
-    				?>
-    				<br><br>
-				<input class="btn waves-effect waves-light" type="submit" value="REGISTER" name="register_button" >
-			</form>
-		</div>
-    				<?php
+			<?php
 			}
 		}
 		else{
-		?>
+			?>
 			<div class="row" style="padding-left: 450px; font-size: 20px; font-weight: bold;">
-			<div class="col-lg-3">
-				SELECT MESS
+				<div class="col-lg-3">
+					SELECT MESS
+				</div>
 			</div>
-
-		</div>
-		<div class="row" style="padding-left: 450px; font-size: 18px;">
-			<form method="post" action="messcard.php" onsubmit="return confirm('Are you sure you want to register for this mess?');">
-				<?php 
-					$sql = "SELECT Name FROM mess_info WHERE Remaining > 0";
-					$result = $MYSQL_CONNECTION->query($sql);
-					while($row = $result->fetch_assoc()) {
-						$mess_name = $row["Name"];
-				?>
-				<br>
-					<p>
-      					<label>
-        					<input name="mess" type="radio" value = <?php echo $mess_name ?> />
-        						<span><?php echo $mess_name ?></span>
-      					</label>
-   					 </p>
-      	<br><br>
-				<input class="btn waves-effect waves-light" type="submit" value="REGISTER" name="register_button" >
-			</form>
-        			<?php
-    				}
-		}
-	 ?>
-		
+			<div class="row" style="padding-left: 450px; font-size: 18px;">
+				<form method="post" action="messcard.php" onsubmit="return confirm('Are you sure you want to register for this mess?');">
+					<?php 
+						$sql = "SELECT Name FROM mess_info WHERE Remaining > 0";
+						$result = $MYSQL_CONNECTION->query($sql);
+						while($row = ($result->fetch_assoc())) {
+							$mess_name = $row["Name"];
+					?>
+								<br>
+						
+		    					<input name="mess" type="radio" value=<?php echo $mess_name ?> />
+		  
+		    			<?php } ?>
+						<br><br>
+					<input class="btn waves-effect waves-light" type="submit" value="REGISTER" name="register_button" >
+				</form>
+			</div>
+    				<?php
+			}
+		?>
     				
     				
 			<?php 
@@ -233,7 +199,7 @@
 		</div>
 </div>
 </section>
-<br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br>
 <?php include_once("{$_SERVER['DOCUMENT_ROOT']}/Includes/footer.php"); ?>
 </body>
 </html>
