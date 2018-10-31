@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `Messcard`
+-- Database: `MessCard`
 --
 
 -- --------------------------------------------------------
@@ -38,6 +38,7 @@ CREATE TABLE `contractor` (
 -- --------------------------------------------------------
 
 --
+
 -- Table structure for table `due_files`
 --
 

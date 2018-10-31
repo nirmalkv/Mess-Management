@@ -78,6 +78,20 @@
 			</div>
 		</div>
 		<div class="col-sm-12 col-lg-4 d-flex mb-4">
+            <div class="card flex-fill">
+                <div class="card-header text-center">Verify</div>
+                    <div class="card-body">
+                       	<form >
+                            <input id = "messcardno" type="text" placeholder="Mess Card No.">
+                            <input type = "button" class ="btn btn-primary" onclick="verify(document.getElementById('messcardno').value)" value = "Submit" >
+                            <p id ="response"></p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+		<!-- <div class="col-sm-12 col-lg-4 d-flex mb-4">
 				<div class="card flex-fill">
 					<div class="card-header text-center">Logout</div>
 					<div class="card-body">
@@ -87,9 +101,26 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		</div> -->
 	</div>
 </div>
 <?php include_once("{$_SERVER['DOCUMENT_ROOT']}/Includes/footer.php"); ?>
 </body>
+<script>
+function verify(str) {
+    if (str.length == 0) {
+        window.alert("Enter Mess Card Number!");
+        return;
+    } else {
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                window.alert(this.responseText);
+            }
+        };
+        xmlhttp.open("GET", "php/verify.php?messcard=" + str, true);
+        xmlhttp.send();
+    }
+}
+</script>
 </html>
