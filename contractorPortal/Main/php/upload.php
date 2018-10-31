@@ -1,8 +1,6 @@
 <?php
 session_start();
-if(!isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-    echo '<script>window.location.replace("http://'.$_SERVER['SERVER_NAME'].'/Main/index.php");</script>';
-    }
+require_once("{$_SERVER['DOCUMENT_ROOT']}/Scripts/checkLoggedOut.php");
 require_once("{$_SERVER['DOCUMENT_ROOT']}/Scripts/connection.php");
 $contractorId = $_SESSION['Username'];
 
