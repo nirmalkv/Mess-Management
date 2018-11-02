@@ -7,11 +7,11 @@
 	{
 		$username = $MYSQL_CONNECTION->real_escape_string(trim($_POST['username']));
 		$password = $MYSQL_CONNECTION->real_escape_string(trim($_POST['password']));
-		$query = $MYSQL_CONNECTION->prepare("SELECT student_user.Rollno,student_user.Password FROM student_user WHERE student_user.Rollno=?");
+		$query = $MYSQL_CONNECTION->prepare("SELECT student_user.Rollno,student_user.Password,student_user.FirstLogin FROM student_user WHERE student_user.Rollno=?");
 		$query->bind_param('s',$username);
 		$query->execute();
 		$query->store_result();
-		$query->bind_result($DatabaseUsername,$DatabasePassword);
+		$query->bind_result($DatabaseUsername,$DatabasePassword,$FirstLogin);
 
 		$query->fetch();
 
@@ -27,6 +27,10 @@
 			$MYSQL_CONNECTION->close();
 			$_SESSION['LoggedIn'] = true;
 			$_SESSION['Username'] = $username;
+			$_SESSION['FirstLogin'] = $FirstLogin;
+			if($FirstLogin == 1)
+				echo '<script>window.location.replace("../../Main/ChangePassword.php")</script>';
+			else
 			echo '<script>window.location.replace("../../Main/index.php")</script>';
 		}
 	}

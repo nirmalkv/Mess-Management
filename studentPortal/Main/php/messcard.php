@@ -7,7 +7,6 @@
 	$sql = "SELECT * FROM student_info WHERE Rollno = '$username'";
 	$result = $MYSQL_CONNECTION->query($sql);
 	$details_row = $result->fetch_assoc();
-	echo $_POST["mess"];
 	$_SESSION['Mess'] = $_POST["mess"];
 	$new_mess = $_SESSION['Mess'];
 	$sql = "SELECT * FROM mess_card WHERE Rollno = '$username'";
@@ -97,7 +96,7 @@
       	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
  </head>
  <body>
- 	<?php include_once("{$_SERVER['DOCUMENT_ROOT']}/Includes/header.php"); ?>
+<?php include_once("{$_SERVER['DOCUMENT_ROOT']}/Includes/header.php"); ?>
 	<br><br><br>
 	<section class="banner-area relative" id="home" data-parallax="scroll" data-image-src="images/NIT-Calicut.jpg" >
 	<div class="container">

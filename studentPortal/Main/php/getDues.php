@@ -8,7 +8,7 @@
 					$result = $MYSQL_CONNECTION->query($sql);
 					$Due_out = $result->fetch_assoc();
 					$due = $Due_out["Due"];
-					echo "Rs ". $due;
+					echo $due;
 
 				}
 ?>

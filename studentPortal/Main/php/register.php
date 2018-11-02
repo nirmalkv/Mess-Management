@@ -13,6 +13,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<style>
+		footer{
+			position: absolute;
+			right: 0;bottom: 0;left: 0;
+		}
+	</style>
 	<title>
 		REGISTER FOR MESS
 	</title>
@@ -77,120 +83,129 @@
 		</div>
 	</div>
 		
-		<div class="row" style="padding-left: 450px; font-size: 18px;">
-		<div class="col-lg-3">Name:</div>
-		<div class="col-lg-3">
+		<div class="row" style=" font-size: 18px;">
+		<span class="col l4 push-l4">Name:</span>
+		<span class="col l4">
 			<?php 
 				echo $details_row["Name"];
 			 ?>
-		</div>
+		</span>
 	</div>
-	<div class="row" style="padding-left: 450px; font-size: 18px;">
-		<div class="col-lg-3">Roll No:</div>
-		<div class="col-lg-3">
+	<div class="row" style=" font-size: 18px;">
+		<span class="col l4 push-l4">Roll Number:</span>
+		<span class="col l4">
 			<?php 
 				echo $username;
 			 ?>
-		</div>
+		</span>
 	</div>
-		<div class="row" style="padding-left: 450px; font-size: 18px;">
-		<div class="col-lg-3">Hostel:</div>
-		<div class="col-lg-3">
+	<div class="row" style=" font-size: 18px;">
+		<span class="col l4 push-l4">Branch:</span>
+		<span class="col l4">
+			<?php 
+				echo $details_row["Branch"];
+			 ?>
+		</span>
+	</div>
+	<div class="row" style=" font-size: 18px;">
+		<span class="col l4 push-l4">Date of Birth:</span>
+		<span class="col l4">
+			<?php 
+				echo $details_row["DOB"];
+			 ?>
+		</span>
+	</div>
+	<div class="row" style=" font-size: 18px;">
+		<span class="col l4 push-l4">Programme:</span>
+		<span class="col l4">
+			<?php 
+				echo $details_row["Programme"];
+			 ?>
+		</span>
+	</div>
+	<div class="row" style=" font-size: 18px;">
+		<span class="col l4 push-l4">Hostel:</span>
+		<span class="col l4">
 			<?php 
 				echo $details_row["Hostel"];
 			 ?>
-		</div>
+		</span>
 	</div>
-		<div class="row" style="padding-left: 450px; font-size: 18px;">
-		<div class="col-lg-3">Room No:</div>
-		<div class="col-lg-3">
+	<div class="row" style=" font-size: 18px;">
+		<span class="col l4 push-l4">Room No:</span>
+		<span class="col l4">
 			<?php 
 				echo $details_row["Room"];
 			 ?>
-		</div>
+		</span>
+	</div>
+	<div class="row" style=" font-size: 18px;">
+		<span class="col l4 push-l4">Phone:</span>
+		<span class="col l4">
+			<?php 
+				echo $details_row["Phone"];
+			 ?>
+		</span>
 	</div>
 	<br><br>
 	<?php 
-		$sql = "SELECT * FROM mess_card WHERE Rollno = '$username'";
-		if (($result = $MYSQL_CONNECTION->query($sql))->num_rows > 0 ) {
+		$sql = "SELECT * FROM mess_card A WHERE Rollno = '$username'";
+		if (($result = $MYSQL_CONNECTION->query($sql))->num_rows > 0 ) 
+		{
 			$mess_details = $result->fetch_assoc();
-			if ($mess_details["Update_mess"] == 1) {
+			if ($mess_details["Update_mess"] == 1) 
+			{
 				?>
-				<div class="row" style="padding-left: 450px; font-size: 18px;">
-				<div class="col-lg-10">You have already registered for 
-					<?php 
-						echo " \"",$mess_details["Curr_mess"],"\" Mess for this month. ";
-					 ?>
-					 You can't register again for this month.
+				<div class="row" style="font-size: 18px; color: #ff0000;">
+					<div class="col" align="center">You have already registered for 
+						<?php 
+							echo " \"",$mess_details["Curr_mess"],"\" Mess for this month. ";
+						 ?>
+						 You can't register again for this month.
+					</div>
+				</div>
+			<?php
+			}
+		
+			else{
+			?>
+			<div class="row" style="font-size: 20px; font-weight: bold; text-align: center;">
+				<div class="col">
+					SELECT MESS
 				</div>
 			</div>
-				<?php
-			}
-			else{
-				?>
-				<div class="row" style="padding-left: 450px; font-size: 20px; font-weight: bold;">
-			<div class="col-lg-3">
-				SELECT MESS
+			<br>
+				<form method="post" action="messcard.php" onsubmit="return confirm('Are you sure you want to register for this mess?');">
+					<div class="row" style=" font-size: 18px; width: 100%;">
+					<?php 
+						$sql = "SELECT Name, Type FROM mess_info WHERE Remaining > 0";
+						$result = $MYSQL_CONNECTION->query($sql);
+						while($row = ($result->fetch_assoc())) 
+						{
+							$mess_name = $row["Name"];
+							$mess_type = $row["Type"];
+					?>
+						<div class="col-lg-12" align="center">
+							<p>
+								<label>
+			    					<input name="mess" type="radio" value=<?php echo $mess_name ?> />
+			  						<span><?php echo $mess_name." - ".$mess_type ?></span>
+			  					</label>
+				  			</p>
+			  			</div>
+		  			</div>
+		    			<?php } ?>
+						<br><br>
+						<div class="row" style="width:100%;">
+							<div class="col-lg-12" align="center">
+					<input class="col-lg-4 btn waves-effect waves-light" type="submit" value="REGISTER" name="register_button">
+				</div>
 			</div>
-
-		</div>
-		<div class="row" style="padding-left: 450px; font-size: 18px;">
-			<form method="post" action="messcard.php" onsubmit="return confirm('Are you sure you want to register for this mess?');">
-				<?php 
-					$sql = "SELECT Name FROM mess_info WHERE Remaining > 0";
-					$result = $MYSQL_CONNECTION->query($sql);
-					while($row = $result->fetch_assoc()) {
-						$mess_name = $row["Name"];
-				?>
-				<br>
-					<p>
-      					<label>
-        					<input name="mess" type="radio" value = <?php echo $mess_name ?> />
-        						<span><?php echo $mess_name ?></span>
-      					</label>
-   					 </p>
-      
-        			<?php
-    				}
-    				?>
-    				<br><br>
-				<input class="btn waves-effect waves-light" type="submit" value="REGISTER" name="register_button" >
-			</form>
-		</div>
+				</form>
     				<?php
 			}
 		}
-		else{
 		?>
-			<div class="row" style="padding-left: 450px; font-size: 20px; font-weight: bold;">
-			<div class="col-lg-3">
-				SELECT MESS
-			</div>
-
-		</div>
-		<div class="row" style="padding-left: 450px; font-size: 18px;">
-			<form method="post" action="messcard.php" onsubmit="return confirm('Are you sure you want to register for this mess?');">
-				<?php 
-					$sql = "SELECT Name FROM mess_info WHERE Remaining > 0";
-					$result = $MYSQL_CONNECTION->query($sql);
-					while($row = $result->fetch_assoc()) {
-						$mess_name = $row["Name"];
-				?>
-				<br>
-					<p>
-      					<label>
-        					<input name="mess" type="radio" value = <?php echo $mess_name ?> />
-        						<span><?php echo $mess_name ?></span>
-      					</label>
-   					 </p>
-      	<br><br>
-				<input class="btn waves-effect waves-light" type="submit" value="REGISTER" name="register_button" >
-			</form>
-        			<?php
-    				}
-		}
-	 ?>
-		
     				
     				
 			<?php 
@@ -201,7 +216,7 @@
 		</div>
 </div>
 </section>
-<br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br>
 <?php include_once("{$_SERVER['DOCUMENT_ROOT']}/Includes/footer.php"); ?>
 </body>
 </html>
