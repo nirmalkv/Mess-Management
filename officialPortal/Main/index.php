@@ -42,7 +42,7 @@ p {
 	<div style="float:right">
     <ul class="nav navbar-nav " >
       <li class="active"><a href="#">Home</a></li>
-      <li><a href="../Logout/logout.php">logout</a></li>
+      <li><a href="../Logout/logout.php">Logout</a></li>
       
     </ul>
 	</div>

@@ -13,6 +13,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<style>
+		footer{
+			position: absolute;
+			right: 0;bottom: 0;left: 0;
+		}
+	</style>
 	<title>
 		REGISTER FOR MESS
 	</title>
@@ -143,16 +149,15 @@
 	</div>
 	<br><br>
 	<?php 
-		$sql = "SELECT * FROM mess_card WHERE Rollno = '$username'";
+		$sql = "SELECT * FROM mess_card A WHERE Rollno = '$username'";
 		if (($result = $MYSQL_CONNECTION->query($sql))->num_rows > 0 ) 
 		{
 			$mess_details = $result->fetch_assoc();
 			if ($mess_details["Update_mess"] == 1) 
 			{
-				echo '<script>console.log("Hi there ready");</script>';
 				?>
-				<div class="row" style="font-size: 18px;">
-					<div class="col">You have already registered for 
+				<div class="row" style="font-size: 18px; color: #ff0000;">
+					<div class="col" align="center">You have already registered for 
 						<?php 
 							echo " \"",$mess_details["Curr_mess"],"\" Mess for this month. ";
 						 ?>
@@ -161,33 +166,45 @@
 				</div>
 			<?php
 			}
-		}
-		else{
+		
+			else{
 			?>
-			<div class="row" style="padding-left: 450px; font-size: 20px; font-weight: bold;">
-				<div class="col-lg-3">
+			<div class="row" style="font-size: 20px; font-weight: bold; text-align: center;">
+				<div class="col">
 					SELECT MESS
 				</div>
 			</div>
-			<div class="row" style="padding-left: 450px; font-size: 18px;">
+			<br>
 				<form method="post" action="messcard.php" onsubmit="return confirm('Are you sure you want to register for this mess?');">
+					<div class="row" style=" font-size: 18px; width: 100%;">
 					<?php 
-						$sql = "SELECT Name FROM mess_info WHERE Remaining > 0";
+						$sql = "SELECT Name, Type FROM mess_info WHERE Remaining > 0";
 						$result = $MYSQL_CONNECTION->query($sql);
-						while($row = ($result->fetch_assoc())) {
+						while($row = ($result->fetch_assoc())) 
+						{
 							$mess_name = $row["Name"];
+							$mess_type = $row["Type"];
 					?>
-								<br>
-						
-		    					<input name="mess" type="radio" value=<?php echo $mess_name ?> />
-		  
+						<div class="col-lg-12" align="center">
+							<p>
+								<label>
+			    					<input name="mess" type="radio" value=<?php echo $mess_name ?> />
+			  						<span><?php echo $mess_name." - ".$mess_type ?></span>
+			  					</label>
+				  			</p>
+			  			</div>
+		  			</div>
 		    			<?php } ?>
 						<br><br>
-					<input class="btn waves-effect waves-light" type="submit" value="REGISTER" name="register_button" >
-				</form>
+						<div class="row" style="width:100%;">
+							<div class="col-lg-12" align="center">
+					<input class="col-lg-4 btn waves-effect waves-light" type="submit" value="REGISTER" name="register_button">
+				</div>
 			</div>
+				</form>
     				<?php
 			}
+		}
 		?>
     				
     				

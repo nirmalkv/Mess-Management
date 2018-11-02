@@ -9,6 +9,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<style>
+		footer{
+			position: absolute;
+			right: 0;bottom: 0;left: 0;
+		}
+	</style>
 	<title>Student Portal</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -153,9 +159,18 @@
 				<button class="waves-effect waves-light btn" onclick="getDues('<?php echo $_SESSION['Username']; ?>')">Check Dues</button>
 		</div>
 		<div class="col l1 pull-l2" style="font-size: 18px" id="append-dues"></div>
+		
 	</div>
-		<div class="row" style="text-align: center;" id="dues-paid" hidden>
-				<div class="col">
+		<div class="row" id="dues-not-paid"  hidden>
+			<div class="col-lg-12" align="center">
+			<a href="https://www.onlinesbi.com/prelogin/icollecthome.htm" target="_blank">
+			<button class="col-lg-4 waves-effect waves-light btn" >Pay fee</button>
+			</a>
+			</div>
+		</div>
+
+		<div class="row" id="dues-paid" hidden>
+				<div class="col-lg-12" align="center">
 					<form method="post" action="php/register.php">
 						<input class="waves-effect waves-light btn" type="submit" value="Register for Mess" name="Mess_Register">
 					</form>
@@ -197,6 +212,9 @@
 				if(Number(data) <= 0){
 					console.log("Dues are 0");
 					document.getElementById("dues-paid").removeAttribute("hidden");
+				}
+				else{
+					document.getElementById("dues-not-paid").removeAttribute("hidden");
 				}
 			});
 	}

@@ -1,5 +1,5 @@
 <?php
-require_once('../Config/config.php');
+require_once("{$_SERVER['DOCUMENT_ROOT']}/Config/config.php");
 // Create connection
 $mysqli = new mysqli($server, $username, $password, $dbname);
 

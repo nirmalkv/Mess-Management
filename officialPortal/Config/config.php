@@ -2,6 +2,6 @@
 
 	$server = "localhost";
 	$username = "root";
-	$password = "";
-	$dbname = "messcard";
+	$password = "1234";
+	$dbname = "MessCard";
 ?>

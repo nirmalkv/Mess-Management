@@ -26,7 +26,7 @@ if (! isset ( $_SESSION ['admin'] ))
     <ul class="nav navbar-nav " >
       <li><a href="index.php">Home</a></li>
 	  <li><a href="search.php">Search</a></li>
-      <li><a href="../Logout/logout.php">logout</a></li>
+      <li><a href="../Logout/logout.php">Logout</a></li>
       
     </ul>
 	</div>

@@ -1,7 +1,7 @@
 <header class="default-header">
   <nav class="navbar navbar-expand-lg  navbar-light" style="background-color: #FFF;">
     <div class="container">
-        <a class="navbar-brand" href="index.php">
+        <a class="navbar-brand" href="https://messregistration.com">
           <img src="images/nitc-logo.jpg" alt="">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -15,7 +15,7 @@
           session_start();
           if($_SESSION['LoggedIn']==true)
           {
-            // echo '<li><a href="http://student.messregistration.com/Main/ChangePassword.php">Change Password</a></li>';
+            echo '<li><a href="http://student.messregistration.com/Main/ChangePassword.php">Change Password</a></li>';
             echo '<li><a href="http://student.messregistration.com/Logout/logout.php">LOGOUT</a></li>';
           }
           ?>                 

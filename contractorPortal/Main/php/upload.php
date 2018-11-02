@@ -1,4 +1,6 @@
 <?php
+// error_reporting(E_ALL);
+// ini_set('display_errors', '1');
 session_start();
 require_once("{$_SERVER['DOCUMENT_ROOT']}/Scripts/checkLoggedOut.php");
 require_once("{$_SERVER['DOCUMENT_ROOT']}/Scripts/connection.php");
@@ -16,15 +18,15 @@ if(date("m") == 1){
     $month = date("m") - 1;
     $year = date("Y");
 }
-
 if(is_uploaded_file(($_FILES['duefile']['tmp_name']))) {
     $file_tmp =$_FILES['duefile']['tmp_name'];
+    $fileContents = addslashes(file_get_contents($file_tmp));
     $checkquery = "SELECT Id FROM due_files WHERE Mess='$mess' AND Month='$month' AND Year='$year'";
     $temp = mysqli_query($MYSQL_CONNECTION,$checkquery);
     $data = mysqli_fetch_array($temp);
     if($data['Id'] == ""){
-        $filename = "Mess-bill-". $mess .'-'.$month.".xlxs"; 
-        $insert = "INSERT INTO due_files (Contractor_id,Mess,Month,Year,Filename,File) VALUES ('$contractorId','$mess','$month','$year','$filename','$file_tmp')";
+        $filename = "Mess-bill-". $mess .'-'.$month.".xlsx"; 
+        $insert = "INSERT INTO due_files (Contractor_id,Mess,Month,Year,Filename,File) VALUES ('$contractorId','$mess','$month','$year','$filename','$fileContents')";
         if(mysqli_query($MYSQL_CONNECTION,$insert)){
             echo '<script>window.alert("File uploaded successfully!")</script>';
             echo '<script>window.location.replace("../index.php")</script>';

@@ -28,7 +28,7 @@ if (! isset ( $_SESSION ['admin'] ))
 	<div style="float:right">
     <ul class="nav navbar-nav " >
       <li><a href="index.php">Home</a></li>
-      <li><a href="../Logout/logout.php">logout</a></li>
+      <li><a href="../Logout/logout.php">Logout</a></li>
       
     </ul>
 	</div>

@@ -66,7 +66,7 @@ if ( isset ( $_SESSION ['admin'] ))
 	<div class="limiter">
 		<div class="container-login100" style="background-image: url('images/NIT-Calicut.jpg');">
 			<div class="wrap-login100">
-				<form class="login100-form validate-form" action="officialLogin.php" method="POST">
+				<form class="login100-form validate-form" action="php/officialLogin.php" method="POST">
 					<!-- <span class="login100-form-logo">
 						<i class="zmdi zmdi-landscape"></i>
 					</span> -->

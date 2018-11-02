@@ -5,6 +5,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<style>
+		footer{
+			position: absolute;
+			right: 0;bottom: 0;left: 0;
+		}
+	</style>
 	<title>MESS</title>
 	<meta charset="utf-8">
   	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -67,9 +73,9 @@
 		<div class="col-lg-4 col-sm-12 d-flex mb-4">
 			<div class="card flex-fill">
 				<div class="card-header text-center">Upload Dues</div>
-				<div class="card-body ">
+				<div class="card-body" style="align-items: center;">
 					<form action="php/upload.php" method="post" enctype="multipart/form-data">
-						<div class="row">
+						<div class="row offset-lg-2">
 						<input type="file" name="duefile" id="duefile" class="">
 						<input type="submit" name="submit" value="Upload" class="btn btn-primary">
 					</div>
@@ -80,9 +86,9 @@
 		<div class="col-sm-12 col-lg-4 d-flex mb-4">
             <div class="card flex-fill">
                 <div class="card-header text-center">Verify</div>
-                    <div class="card-body">
+                    <div class="card-body offset-lg-3">
                        	<form >
-                            <input id = "messcardno" type="text" placeholder="Mess Card No.">
+                            <input id = "messcardno" type="text" placeholder="Mess Card No." style="outline-color: #000000; outline-width: medium; border: 1px solid grey;">
                             <input type = "button" class ="btn btn-primary" onclick="verify(document.getElementById('messcardno').value)" value = "Submit" >
                             <p id ="response"></p>
                         </form>

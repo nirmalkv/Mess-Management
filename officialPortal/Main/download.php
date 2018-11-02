@@ -28,7 +28,7 @@ if (! isset ( $_SESSION ['admin'] ))
 	<div style="float:right">
     <ul class="nav navbar-nav " >
       <li><a href="index.php">Home</a></li>
-      <li><a href="../Logout/logout.php">logout</a></li>
+      <li><a href="../Logout/logout.php">Logout</a></li>
       
     </ul>
 	</div>
@@ -56,7 +56,7 @@ if(!isset($_POST["month"]))
 		<form id="form-update" action="" method="POST">
   <div class="form-group">
     <label style="margin-left: 30%;">Enter Mess</label>
-    <input style="width: 35%; margin-left: 30%;" type="text" class="form-control" name="mess" id="mess" placeholder="mess">
+    <input style="width: 35%; margin-left: 30%;" type="text" class="form-control" name="mess" id="mess" placeholder="Mess">
     
   </div>
   <div class="form-group">
@@ -73,16 +73,31 @@ if(!isset($_POST["month"]))
 else
 {
 	require_once ("../Scripts/connection.php");
+	$monthno = array(
+		"January" => "1",
+		"February" => "2",
+		"March" => "3",
+		"April" => "4",
+		"May" => "5",
+		"June" => "6",
+		"July" => "7",
+		"August" => "8",
+		"September" => "9",
+		"October" => "10",
+		"November" => "11",
+		"December" => "12",
+	);
 	$mess = $_POST ['mess'];
 	$date = $_POST ['month'];
 	$year = date('Y', strtotime($date));
-	$month = date('F', strtotime($date));
+	$month = $monthno[date('F', strtotime($date))];
+	echo $month;
 	$query = "SELECT Filename,File FROM due_files WHERE Month='$month' and Mess='$mess' and Year='$year'";
 	if (! $result = $mysqli->query ( $query )) {
 		die ( "Error" . $mysqli->error );
 	}
 	if ($result->num_rows == 0){
-    echo "<script>
+    echo "<script>console.log('".$year.$month."');
 		alert('Cannot Find date...Try again');
 		window.location.href='download.php';
 		</script>";
@@ -93,10 +108,10 @@ else
 		list($Filename,$File) = mysqli_fetch_array($result);
 		//header("Content-length: $size");
 		header("Content-type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
-		header("Content-Disposition: attachment; filename=$File");
+		header("Content-Disposition: attachment; filename=$Filename");
 		ob_clean();
 		flush();
-		echo $File;
+		echo $File && header('Location: index.php');
 		header ( 'Location: index.php' ) && die ();
 		
 	}
